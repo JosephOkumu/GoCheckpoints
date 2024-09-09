@@ -1,43 +1,36 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "os"
+)
 
-func compare(a, b string) int {
-	if a < b {
-		return -1
-	} else if a > b {
-		return 1
-	} else {
-		return 0
-	}
+// canRewrite checks if it is possible to rewrite the first string using characters from the second string while preserving the order.
+func canRewrite(first, second string) bool {
+    if len(first) == 0 || len(second) == 0 {
+        return false
+    }
 
-
-	// This code below should also work the same way.
-	// runesA := []rune(a)
-	// runesB := []rune(b)
-	// i := 0
-	// j := 0
-
-	// for i < len(runesA) && j < len(runesB) {
-	// 	if runesA[i] < runesB[j] {
-	// 		return -1
-	// 	}else if runesA[i] > runesB[j] {
-	// 		return 1
-	// 	}
-	// 	i++
-	// 	j++
-	// }	
-	// if len(runesA) < len(runesB) {
-	// 	return -1
-	// }else if len(runesA) > len(runesB){
-	// 	return 1
-	// }
-	// return 0
-
+    firstIndex, secondIndex := 0, 0
+    for firstIndex < len(first) && secondIndex < len(second) {
+        if first[firstIndex] == second[secondIndex] {
+            firstIndex++
+        }
+        secondIndex++
+    }
+    // I am loving this code for wordmatch.
+    return firstIndex == len(first)
 }
 
 func main() {
-	fmt.Println(compare("Hello!", "Hello!"))
-	fmt.Println(compare("Salut!", "lut!"))
-	fmt.Println(compare("Ola!", "Ol"))
+    // Check if the number of command-line arguments is 3 (including the program name)
+    if len(os.Args) != 3 {
+        return
+    }
+
+    first, second := os.Args[1], os.Args[2]
+    // Check if the first string can be rewritten using characters from the second string
+    if canRewrite(first, second) {
+        fmt.Println(first)
+    }
 }

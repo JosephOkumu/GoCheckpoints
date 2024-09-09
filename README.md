@@ -1,12 +1,12 @@
 
-# Compare
+# Project Wordmatch
 
-This program works like the function compare. It compares two strings lexographically.
+This project takes takes two string and checks whether it is possible to write the first string with characters from the second string. This rewrite must respect the order in which these characters appear in the second string.
 
 
 ## Documentation
 
-This part contains instructions on how to make use of the program.
+This part contains instructions on how to make use of our program.
 
 ### Usage
 
@@ -15,6 +15,8 @@ After cloning the projects repository, execute the following command in your ter
 ```bash
 go run main.go text1 text2
 ```
+If it is possible to rewrite the first string using letters from the second string. then the string is written on the terminal.
+
 
 ## Author
 
