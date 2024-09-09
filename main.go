@@ -1,36 +1,33 @@
 package main
 
 import (
-    "fmt"
-    "os"
+	// "github.com/01-edu/z01"
+	"fmt"
 )
 
-// canRewrite checks if it is possible to rewrite the first string using characters from the second string while preserving the order.
-func canRewrite(first, second string) bool {
-    if len(first) == 0 || len(second) == 0 {
-        return false
-    }
+func reduceInt(a []int, f func(int, int)int) {
+	result := a[0]
 
-    firstIndex, secondIndex := 0, 0
-    for firstIndex < len(first) && secondIndex < len(second) {
-        if first[firstIndex] == second[secondIndex] {
-            firstIndex++
-        }
-        secondIndex++
-    }
-    // I am loving this code for wordmatch.
-    return firstIndex == len(first)
+	for _, v := range a[1:]{
+		result = f(result, v)
+	}
+	fmt.Println(result)
 }
 
-func main() {
-    // Check if the number of command-line arguments is 3 (including the program name)
-    if len(os.Args) != 3 {
-        return
-    }
+func main(){
+	mul := func(acc int, cur int) int{
+		return acc * cur
+	}
+	sum := func(acc int, cur int) int {
+		return acc + cur
+	}
+	div := func(acc int, cur int) int {
+		return acc/ cur
+	}
+	as := []int{500, 2}
 
-    first, second := os.Args[1], os.Args[2]
-    // Check if the first string can be rewritten using characters from the second string
-    if canRewrite(first, second) {
-        fmt.Println(first)
-    }
+	reduceInt(as, mul)
+	reduceInt(as, sum)
+	reduceInt(as, div)
+
 }
