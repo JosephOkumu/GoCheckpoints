@@ -1,4 +1,4 @@
-module wordmatch
+module searchreplace
 
 go 1.21.5
 

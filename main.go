@@ -1,30 +1,39 @@
 package main
 
 import (
-	"fmt"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
-func mirrorAlpha(str string) string {
-	result := ""
+func searchReplace(str, ltr1, ltr2 string) string {
+	newStr := ""
 	for _, v := range str {
-		if v >= 'A' && v <= 'Z' {
-			distance := v - 'A'
-			v = 'Z' - distance
-		} else if v >= 'a' && v <= 'z' {
-			distance := v - 'a'
-			v = 'z' - distance
+		for _, k := range ltr1 {
+			for _, l := range ltr2 {
+				if v == k {
+					v = l
+				}
+			}
 		}
-		result += string(v)
+		newStr += string(v)
 	}
-	return result
+	return newStr
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println()
+	if len(os.Args) != 4 {
 		return
 	}
-	inputStr := os.Args[1]
-	fmt.Println(mirrorAlpha(inputStr))
+
+	str := os.Args[1]
+	ltr1 := os.Args[2]
+	ltr2 := os.Args[3]
+
+	word := searchReplace(str, ltr1, ltr2)
+
+	for _, v := range word {
+		z01.PrintRune(v)
+	}
+	z01.PrintRune('\n')
 }
