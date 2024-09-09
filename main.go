@@ -1,50 +1,53 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func ItoaBase(value, base int) string {
-	if base < 2 || base > 16 {
-		return ""
+// NodeL represents a node in the linked list
+type NodeL struct {
+	Data interface{} // Data stores the value of the node
+	Next *NodeL      // Next points to the next node in the list
+}
+
+// List represents the linked list
+type List struct {
+	Head *NodeL // Head points to the first node in the list
+	Tail *NodeL // Tail points to the last node in the list
+}
+
+// listSize returns the size (number of nodes) of the linked list
+func listSize(l *List) int {
+	count := 0
+	current := l.Head
+
+	for current != nil {
+		count++
+		current = current.Next
 	}
+	return count
+}
 
-	// Characters representing digits for bases up to 16
-	digits := "0123456789ABCDEF"
-
-	// Handle negative values
-	isNegative := false
-	if value < 0 {
-		isNegative = true
-		value = -value
+// listPushFront inserts a new node with the given data at the beginning of the linked list
+func listPushFront(l *List, data interface{}) {
+	newNode := &NodeL{
+		Data: data,
+		Next: l.Head,
 	}
-
-	// Convert the value to the specified base
-	result := ""
-	for value > 0 {
-		remainder := value % base
-		result = string(digits[remainder]) + result
-		value /= base
+	if l.Head == nil {
+		l.Tail = newNode
 	}
-
-	// Handle the case where value is 0
-	if result == "" {
-		result = "0"
-	}
-
-	// Add minus sign if the original value was negative
-	if isNegative {
-		result = "-" + result
-	}
-
-	return result
+	l.Head = newNode
 }
 
 func main() {
-	fmt.Println(ItoaBase(125, 10))  // "125"
-	fmt.Println(ItoaBase(125, 2))   // "1111101"
-	fmt.Println(ItoaBase(125, 16))  // "7D"
-	fmt.Println(ItoaBase(-125, 10)) // "-125"
-	fmt.Println(ItoaBase(-125, 2))  // "-1111101"
-	fmt.Println(ItoaBase(-125, 16)) // "-7D"
+	// Create a new linked list
+	link := &List{}
+
+	// Insert nodes at the beginning of the list
+	listPushFront(link, "Hello")
+	listPushFront(link, "2")
+	listPushFront(link, "you")
+	listPushFront(link, "man")
+
+	// Print the size of the linked list
+	fmt.Println(listSize(link))
 }

@@ -1,7 +1,7 @@
 
-# ItoaBase
+# ListSize
 
-This program converts an int value to a string using the specified base in the argument and prints it. The base is expressed as an int, from 2 to 16.
+This program counts the number of elements in a linked list.
 
 ## Documentation
 
@@ -9,7 +9,8 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Converting an int to a string using specified base.
+- Counting the number of elements in a linked list.
+- Adding elements to the front of a linked list.
 
 ### Usage
 
@@ -23,12 +24,7 @@ go run .
 
 Expected output :
 ```bash
-125
-1111101
-7D
--125
--1111101
--7D
+4
 ```
 
 ## Contributions
