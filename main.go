@@ -1,78 +1,59 @@
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
+    "strconv"
 )
 
-func split(str, sep string) []string {
-	// Create an empty slice to store the split strings
-	var result []string
+// Main function
+func main() {
+    // Check if the correct number of command-line arguments is provided
+    if len(os.Args) != 2 {
+        return
+    }
 
-	// Set the starting index of the current substring to 0
-	start := 0
+    // Get the input from the command-line argument
+    input := os.Args[1]
 
-	for i := 0; i < len(str); i++ {
-		if i+len(sep) <= len(str) && str[i:i+len(sep)] == sep {			
-			// Update the start index to the end of the separator
-			result = append(result, str[start:i])
-			start = i + len(sep)
-			// We decrement by 1 since i is 0 index based
-			i += len(sep) - 1			
-		}
-	}
-	// After the loop, append the remaining substring from the start index to end of the string to
-	// the result slice	
-	result = append(result, str[start:])
-	return result
+    // Parse the input number from the command-line argument
+    number, err := strconv.Atoi(input)
+    if err != nil || number <= 0 || number >= 4000 {
+        fmt.Println("ERROR: cannot convert to roman digit")
+        return
+    }
+
+    // Convert the number to a Roman numeral and print the breakdown and the Roman numeral
+    roman, breakdown := toRoman(number)
+    fmt.Println(breakdown)
+    fmt.Println(roman)
 }
 
-// This commented out split function shows how to use make without append in slices.
-// func split(str, sep string) []string {
+// Function to convert an integer to a Roman numeral
+func toRoman(num int) (string, string) {
+    // Define the values and symbols for the Roman numerals
+    vals := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+    symbs := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+    breakdowns := []string{"M", "(M-C)", "D", "(D-C)", "C", "(C-X)", "L", "(L-X)", "X", "(X-I)", "V", "(V-I)", "I"}
 
-// We start with the assumption that there is at least one segment with or without sep.
-// 	estimatedSplits := 1
-// 	for i := 0; i < len(str); i++ {		
-// 		if i+len(sep) <= len(str) && str[i:i+len(sep)] == sep {
-// 			estimatedSplits++
-// 			// Increment the position by the length of the separator minus 1
-// 			// to avoid checking the same separator again
-// 			i += len(sep) - 1
-// 		}
-// 	}
+    // Initialize the Roman numeral and breakdown strings
+    var roman string
+    var breakdown string
 
+    // Loop until the number is 0
+    for i := 0; i < len(vals); i++ {
+        // Loop until the number is greater than or equal to the current value
+        for num >= vals[i] {
+            // Subtract the value from the number and add the corresponding symbol to the Roman numeral
+            num -= vals[i]
+            roman += symbs[i]
+            if breakdown != "" {
+                breakdown += "+"
+            }
+            breakdown += breakdowns[i]
+        }
+    }
 
-// 	// Create a slice with the estimated capacity
-// 	result := make([]string, estimatedSplits)
-// 	start, index := 0, 0
-
-// 	// Iterate through the string again to perform the actual splitting
-// 	for i := 0; i < len(str); i++ {
-// 		if i+len(sep) <= len(str) && str[i:i+len(sep)] == sep {
-// 			// Assign the substring from the start position to the current position to the result slice
-// 			result[index] = str[start:i]
-// 			index++
-// 			// Update the start position to the position after the separator
-// 			start = i + len(sep)
-// 			// Increment the position by the length of the separator minus 1
-// 			// to avoid checking the same separator again
-// 			i += len(sep) - 1
-// 		}
-// 	}
-
-// 	// Assign the remaining substring (from the last separator to the end of the string) to the result slice
-// 	result[index] = str[start:]
-// 	// Return the result slice, trimming any unused capacity
-// 	return result
-// }
-
-
-func main() {
-	if len(os.Args) != 1{
-		return
-	}
-	str := "HelloHAhowHAareHAyou"
-	
-
-	fmt.Printf("%#v\n", split(str, "HA"))
+    // Return the Roman numeral and breakdown
+    return roman, breakdown
 }

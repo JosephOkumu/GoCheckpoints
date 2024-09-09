@@ -1,7 +1,7 @@
 
-# Split
+# RomanNumbers
 
-This program receives a string and a separator and returns a slice of strings that results from splitting the string by the separator
+This program takes input as integer and prints out the integer in roman number form.
 
 ## Documentation
 
@@ -9,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Separates a string using the separator
+- Converts integer to roman number
 
 ### Usage
 
@@ -17,9 +17,14 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run .
+go run . <number>
 
 ```
+For examle:
+```bash
+go run . 1001
+```
+
 
 ## Contributions
 Users of this program are allowed to contribute to this project in terms of adding features, or fixing bugs. Just make a pull request.
