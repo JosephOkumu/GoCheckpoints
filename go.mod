@@ -1,5 +1,4 @@
-module powerOf2
+module Webforpoweroftwo
 
 go 1.21.5
-
 
