@@ -1,7 +1,7 @@
 
-# RepeatAlpha
+# FPrime
 
-This program takes a string and displays it repeating each alphabetical character as many times as its alphabetical index.
+This program takes a positive integer and displays its prime factors in ascending order separated by by *.
 
 ## Documentation
 
@@ -9,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Each alphabetical character is printed as many times as its alphabetical index.
+- Displays prime factors in ascending order separated by *.
 
 ### Usage
 
@@ -17,10 +17,17 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run .
+go run . <number>
 
 ```
-
+For example:
+```bash
+go run . 1000
+```
+Expected output :
+```bash
+2*2*2*5*5*5
+```
 
 ## Contributions
 Users of this program are allowed to contribute to this project in terms of adding features, or fixing bugs. Just make a pull request.

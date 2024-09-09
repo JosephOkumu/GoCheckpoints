@@ -1,5 +1,4 @@
-module repeatalpha
+module fprime
 
 go 1.21.5
-
 

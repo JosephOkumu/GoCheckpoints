@@ -1,30 +1,63 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
 
-func repeatAlpha(str string) string {
-	result := ""
-	for _, v := range str {
-		if (v >= 'a' && v <= 'z') {
-			index := int(v) - int('a') + 1
-			for i := 0; i < index; i++ {
-				result += string(v)
-			}
-		} else if (v >= 'A' && v <= 'Z') {
-			index := int(v) - int('A') + 1
-			for i := 0; i < index; i++ {
-				result += string(v)
-			}
-		} else {
-			result += string(v)
+func isPrime(num int) bool {
+	if num <= 1 {
+		return false
+	}
+	if num <= 3 {
+		return true
+	}
+	if num%2 == 0 || num%3 == 0 {
+		return false
+	}
+	
+	for i := 5; i*i <= num; i += 6 {
+		if num%i == 0 || num%(i+2) == 0 {
+			return false
 		}
+	}
+	return true
+}
+
+
+func fPrime(nb int) string {
+	slice := []int{}
+	for i := 1; i <= nb; i++ {
+		if isPrime(i) {
+			for nb%i == 0 {
+				slice = append(slice, i)
+				nb/=i
+			}
+		}
+	}
+	
+	result := ""
+	for _, v := range slice {
+		if result != "" {
+			result += "*"
+		}
+		result += strconv.Itoa(v)
 	}
 	return result
 }
 
 func main() {
-	fmt.Println(repeatAlpha("abc"))         // Expected output: abbccc
-	fmt.Println(repeatAlpha("Choumi."))     // Expected output: CChhhhhhoooooooooouuuuuuuuummmmmmmmmmiiiiiiii.
-	fmt.Println(repeatAlpha(""))            // Expected output: (empty string)
-	fmt.Println(repeatAlpha("abacadaba 01!")) // Expected output: abbccacaddabbbb 01!
+	if len(os.Args) != 2 {
+		fmt.Println(0)
+		return
+	}
+	args := os.Args[1]
+
+	num, err := strconv.Atoi(args)
+	if err != nil {
+		return
+	}
+	output := fPrime(num)
+	fmt.Println(output)
 }
