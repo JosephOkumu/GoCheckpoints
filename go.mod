@@ -1,4 +1,4 @@
-module findprevprime
+module table
 
 go 1.21.5
 

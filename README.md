@@ -1,6 +1,6 @@
-# FindPrevPrime
+# MultiplicationTable
 
-This program displays the first prime number that is equal or inferior to the integer passed as parameter
+This program displays a number's multiplication table. The parameter should be a strictly positive number that fits in an int. Said number multiplied by 9 will also fit in an int. 
 
 ## Documentation
 
@@ -13,6 +13,25 @@ After cloning the projects repository, and navigating into the project folder, e
 
 ```bash
 go run main.go <number>
+```
+
+For example:
+
+```bash
+go run main.go 10
+```
+The output will be:
+
+```bash
+1 x 10 = 10
+2 x 10 = 20
+3 x 10 = 30
+4 x 10 = 40
+5 x 10 = 50
+6 x 10 = 60
+7 x 10 = 70
+8 x 10 = 80
+9 x 10 = 90
 ```
 
 ## Author
