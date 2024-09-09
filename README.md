@@ -1,7 +1,7 @@
 
-# FPrime
+# PrintMemory
 
-This program takes a positive integer and displays its prime factors in ascending order separated by by *.
+This program takes an array, (arr [10]byte), and displays the memory. After displaying the memory the program displays all the ASCII graphic characters. The non-printable characters are replaced with dot. 
 
 ## Documentation
 
@@ -9,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Displays prime factors in ascending order separated by *.
+- Prints memory
 
 ### Usage
 
@@ -17,16 +17,18 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run . <number>
+go run . | cat -e
 
 ```
-For example:
-```bash
-go run . 1000
-```
 Expected output :
+
 ```bash
-2*2*2*5*5*5
+68 65 6c 6c $
+6f 10 15 2a $
+00 00$ 
+hello..*..$
+$
+
 ```
 
 ## Contributions
