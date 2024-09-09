@@ -1,39 +1,44 @@
 package main
 
 import (
-	"os"
-
-	"github.com/01-edu/z01"
+	"fmt"
 )
 
-func searchReplace(str, ltr1, ltr2 string) string {
-	newStr := ""
-	for _, v := range str {
-		for _, k := range ltr1 {
-			for _, l := range ltr2 {
-				if v == k {
-					v = l
-				}
-			}
-		}
-		newStr += string(v)
-	}
-	return newStr
-}
-
-func main() {
-	if len(os.Args) != 4 {
+func Chunk(slice []int, size int) {
+	// Check if the size is 0, if so, print a newline and return
+	if size == 0 {
+		fmt.Println()
 		return
 	}
 
-	str := os.Args[1]
-	ltr1 := os.Args[2]
-	ltr2 := os.Args[3]
+	// Initialize a 2D slice to store the chunked sub-slices
+	var result [][]int
 
-	word := searchReplace(str, ltr1, ltr2)
+	// Iterate over the input slice in chunks of the specified size
+	for i := 0; i < len(slice); i += size {
+		// Determine the end index of the current chunk
+		end := i + size
+		if end > len(slice) {
+			end = len(slice)
+		}
 
-	for _, v := range word {
-		z01.PrintRune(v)
+		// Create a temporary slice to hold the current chunk
+		temp := []int{}
+		// Append the elements from the original slice to the temporary slice
+		temp = append(temp, slice[i:end]...)
+		// Append the temporary slice to the result slice
+		result = append(result, temp)
 	}
-	z01.PrintRune('\n')
+
+	// Print the resulting chunked sub-slices
+	fmt.Println(result)
+}
+
+func main() {
+	// Test cases with different inputs
+	Chunk([]int{}, 10)                          // Output: []
+	Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 0)     // Output: 
+	Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 3)     // Output: [[0 1 2] [3 4 5] [6 7]]
+	Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 5)     // Output: [[0 1 2 3 4] [5 6 7]]
+	Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 4)     // Output: [[0 1 2 3] [4 5 6 7]]
 }

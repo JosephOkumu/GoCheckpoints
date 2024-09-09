@@ -1,2 +1,2 @@
-# SearchReplace
-This program takes 3 arguments, the first argument is a string in which a letter (the 2nd argument) will be replaced by another one (the 3rd argument).  If the second argument is not contained in the first one (the string) then the program rewrites the string followed by a newline ('\n').
+# Chunk
+Chunk receives as parameters a slice, slice []int, and a number size int. The goal of this function is to chunk a slice into many sub slices where each sub slice has the length of size. If the size is 0 it should print a newline ('\n').
