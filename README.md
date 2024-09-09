@@ -1,7 +1,7 @@
 
-# FoldInt
+# Compare
 
-This program takes as parameters a function, f func(int, int) int a slice of integers, and an integer. For each element of the slice, it should apply the arithmetic function, save the result and print it. The function is tested with the functions Add, Sub, and Mul
+This program works like the function compare. It compares two strings lexographically.
 
 
 ## Documentation
@@ -12,9 +12,8 @@ This part contains instructions on how to make use of the program.
 
 To use this program, you need to have the latest version of Go installed in your system.
 After cloning the projects repository, execute the following command in your terminal.
-
 ```bash
-go run main.go 
+go run main.go text1 text2
 ```
 
 ## Author
@@ -22,6 +21,12 @@ go run main.go
 - [@JosephOkumu](https://github.com/JosephOkumu)
 
 
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Credits
+
+[Zone01Kisumu](https://zone01kisumu.ke)
