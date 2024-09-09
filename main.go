@@ -3,43 +3,33 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 )
 
-func printBits(num int) string {
+func piglatin(str string) string {
+	vowels := "aeiouAEIOU"
+	
 	result := ""
-	slice := []int{}
-	for num > 0 {
-		mod := num % 2
-
-		slice = append(slice, mod)
-		num /= 2
-	}
-	for i := 0; i < len(slice)-1; i++ {
-		for j := i + 1; j < len(slice); j++ {
-			slice[i], slice[j] = slice[j], slice[i]
+	for i, v := range str {
+		for _, ch := range vowels {
+			if v == ch {
+				result += str[i:] + str[:i] + "ay"
+			}
+			
 		}
 	}
-	for _, v := range slice {
-		result += strconv.Itoa(v)
+	
+	if len(result) != 0 {
+		return result
 	}
-	padding := 8 - len(slice)
-
-	for i := 0; i < padding; i++ {
-		result = "0" + result
-	}
-	return result
+	return "No vowels."
+	
 }
 
 func main() {
 	if len(os.Args) != 2 {
 		return
 	}
-	args := os.Args[1]
-	num, err := strconv.Atoi(args)
-	if err != nil {
-		fmt.Print("00000000")
-		return
-	}
-	fmt.Print(printBits(num))
+	args1 := os.Args[1]
+
+	fmt.Println(piglatin(args1))
 }
