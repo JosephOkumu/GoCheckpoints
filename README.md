@@ -1,6 +1,6 @@
-### Swapbits
+### Reversebits
 
-This program takes a byte, swaps its halfs and prints the result.
+This program a byte and reverses it bit by bit.
 
 ## Documentation
 
@@ -16,10 +16,7 @@ go run main.go <byte>
 ```
 Example:
 ```bash
-0100 | 0001
-    \ /
-    / \
-0001 | 0100
+0010 0110 || / 0110 0100
 ```
 
 ## Author
