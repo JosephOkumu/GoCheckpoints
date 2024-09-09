@@ -1,7 +1,8 @@
 
-# Union
+# Intersection
 
-This program takes two string and displays, without doubles, the characters that appear in either one of the string. The display will be in the same order that the characters appear on the command line and will be followed by a newline ('\n').
+This program takes two string and displays, without doubles, the characters that appear in both string, in the order they appear in the first one. The display will be followed by a newline ('\n'). If the number of arguments is different from 2, the program displays nothing.
+
 
 ## Documentation
 
