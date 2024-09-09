@@ -1,7 +1,7 @@
 
-# Intersection
+# FoldInt
 
-This program takes two string and displays, without doubles, the characters that appear in both string, in the order they appear in the first one. The display will be followed by a newline ('\n'). If the number of arguments is different from 2, the program displays nothing.
+This program takes as parameters a function, f func(int, int) int a slice of integers, and an integer. For each element of the slice, it should apply the arithmetic function, save the result and print it. The function is tested with the functions Add, Sub, and Mul
 
 
 ## Documentation
@@ -14,7 +14,7 @@ To use this program, you need to have the latest version of Go installed in your
 After cloning the projects repository, execute the following command in your terminal.
 
 ```bash
-go run main.go <string1> <string2>
+go run main.go 
 ```
 
 ## Author
