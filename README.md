@@ -1,7 +1,7 @@
 
-# SortWordArray
+# RotateString
 
-This program receives a string slice and sorts it by ascii in ascending order.
+This program receives a string and displays this string after rotating it one word to the left. Thus, the first word becomes the last, and others switch position by one to the left.
 
 ## Documentation
 
@@ -9,8 +9,8 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Sorts a string slice.
-
+- Rotates a string one word to the left.
+- Removes multiple spaces from a string.
 
 ### Usage
 
@@ -18,12 +18,16 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run . 
+go run . <string>
 
+```
+For example:
+```bash
+go run . "Let there     be light"
 ```
 Expected output :
 ```bash
-[1 2 3 A B C a b c]
+there be light Let
 ```
 
 ## Contributions
