@@ -6,17 +6,27 @@ import (
 	"strconv"
 )
 
-func toHex(n int) string {
-	if n == 0 {
-		return "0"
-	}
-	hexChars := "0123456789abcdef"
+func printBits(num int) string {
 	result := ""
+	slice := []int{}
+	for num > 0 {
+		mod := num % 2
 
-	for n > 0 {
-		remainder := n % 16
-		result = string(hexChars[remainder]) + result
-		n /= 16
+		slice = append(slice, mod)
+		num /= 2
+	}
+	for i := 0; i < len(slice)-1; i++ {
+		for j := i + 1; j < len(slice); j++ {
+			slice[i], slice[j] = slice[j], slice[i]
+		}
+	}
+	for _, v := range slice {
+		result += strconv.Itoa(v)
+	}
+	padding := 8 - len(slice)
+
+	for i := 0; i < padding; i++ {
+		result = "0" + result
 	}
 	return result
 }
@@ -25,12 +35,11 @@ func main() {
 	if len(os.Args) != 2 {
 		return
 	}
-	input := os.Args[1]
-	num, err := strconv.Atoi(input)
+	args := os.Args[1]
+	num, err := strconv.Atoi(args)
 	if err != nil {
-		fmt.Println("Error")
+		fmt.Print("00000000")
 		return
 	}
-
-	fmt.Println(toHex(num))
+	fmt.Print(printBits(num))
 }
