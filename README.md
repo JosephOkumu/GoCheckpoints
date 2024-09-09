@@ -1,7 +1,7 @@
 
-# PrintMemory
+# ItoaBase
 
-This program takes an array, (arr [10]byte), and displays the memory. After displaying the memory the program displays all the ASCII graphic characters. The non-printable characters are replaced with dot. 
+This program converts an int value to a string using the specified base in the argument and prints it. The base is expressed as an int, from 2 to 16.
 
 ## Documentation
 
@@ -9,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Prints memory
+- Converting an int to a string using specified base.
 
 ### Usage
 
@@ -17,18 +17,18 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run . | cat -e
+go run . 
 
 ```
+
 Expected output :
-
 ```bash
-68 65 6c 6c $
-6f 10 15 2a $
-00 00$ 
-hello..*..$
-$
-
+125
+1111101
+7D
+-125
+-1111101
+-7D
 ```
 
 ## Contributions
