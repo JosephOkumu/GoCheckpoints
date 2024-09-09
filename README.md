@@ -1,6 +1,6 @@
-### Reversebits
+### Printhex
 
-This program a byte and reverses it bit by bit.
+This program takes a number as argument, and prints its hexadecimal value in lowercase.
 
 ## Documentation
 
@@ -12,11 +12,16 @@ To use this program, you need to have the latest version of Go installed in your
 After cloning the projects repository, and navigating into the project folder, execute the following command in your terminal.
 
 ```bash
-go run main.go <byte>
+go run main.go <number>
 ```
 Example:
 ```bash
-0010 0110 || / 0110 0100
+$ go run . 10
+a
+$ go run . 255
+ff
+$ go run . 5156454
+4eae66
 ```
 
 ## Author

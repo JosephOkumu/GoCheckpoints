@@ -1,18 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
 
-func reverseBits(oct byte) byte {
-	var result byte
-	for i := 0; i < 8; i++ {
-		result = (result << 1) | (oct & 1)
-		oct >>= 1
+func toHex(n int) string {
+	if n == 0 {
+		return "0"
+	}
+	hexChars := "0123456789abcdef"
+	result := ""
+
+	for n > 0 {
+		remainder := n % 16
+		result = string(hexChars[remainder]) + result
+		n /= 16
 	}
 	return result
 }
 
 func main() {
-	example := byte(0x26) // 0010 0110
-	reversed := reverseBits(example)
-	fmt.Printf("%08b || / %08b\n", example, reversed) // Output: 00100110 || / 01100100
+	if len(os.Args) != 2 {
+		return
+	}
+	input := os.Args[1]
+	num, err := strconv.Atoi(input)
+	if err != nil {
+		fmt.Println("Error")
+		return
+	}
+
+	fmt.Println(toHex(num))
 }

@@ -1,4 +1,4 @@
-module reversebits
+module printhex
 
 go 1.21.5
 
