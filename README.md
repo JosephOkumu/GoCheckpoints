@@ -1,9 +1,7 @@
 
-# Brackets
+# AtoiBase
 
-This program receives an undefined number of string in arguments. For each argument, if the expression is correctly bracketed, the program prints on the standard output OK. Otherwise it prints Error. Symbols considered as brackets are parentheses ( and ), square brackets [ and ] and curly braces { and }. Every other symbols are simply ignored.
-
-An opening bracket must always be closed by the good closing bracket in the correct order. A string which does not contain any bracket is considered as a correctly bracketed string.
+This program receives two arguments, a numeric string in a given base, and the base which is a string representing all the different digits that can represent a numeric value. It then displays the integer value of the string in the given base.
 
 ## Documentation
 
@@ -11,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Checks if a string is correctly bracketed.
+- Displays the value of a string with respect to the given base.
 
 
 ### Usage
@@ -20,18 +18,16 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run . <string>
-
-```
-For example:
-```bash
-$ go run . '(johndoe)' | cat -e
-
+go run .
 
 ```
 Expected output :
 ```bash
-OK$
+125
+125
+125
+125
+0
 
 ```
 
