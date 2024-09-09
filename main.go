@@ -1,33 +1,30 @@
 package main
 
 import (
-	// "github.com/01-edu/z01"
 	"fmt"
+	"os"
 )
 
-func reduceInt(a []int, f func(int, int)int) {
-	result := a[0]
-
-	for _, v := range a[1:]{
-		result = f(result, v)
+func mirrorAlpha(str string) string {
+	result := ""
+	for _, v := range str {
+		if v >= 'A' && v <= 'Z' {
+			distance := v - 'A'
+			v = 'Z' - distance
+		} else if v >= 'a' && v <= 'z' {
+			distance := v - 'a'
+			v = 'z' - distance
+		}
+		result += string(v)
 	}
-	fmt.Println(result)
+	return result
 }
 
-func main(){
-	mul := func(acc int, cur int) int{
-		return acc * cur
+func main() {
+	if len(os.Args) != 2 {
+		fmt.Println()
+		return
 	}
-	sum := func(acc int, cur int) int {
-		return acc + cur
-	}
-	div := func(acc int, cur int) int {
-		return acc/ cur
-	}
-	as := []int{500, 2}
-
-	reduceInt(as, mul)
-	reduceInt(as, sum)
-	reduceInt(as, div)
-
+	inputStr := os.Args[1]
+	fmt.Println(mirrorAlpha(inputStr))
 }
