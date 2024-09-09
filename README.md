@@ -1,7 +1,7 @@
 
-# AtoiBase
+# SortWordArray
 
-This program receives two arguments, a numeric string in a given base, and the base which is a string representing all the different digits that can represent a numeric value. It then displays the integer value of the string in the given base.
+This program receives a string slice and sorts it by ascii in ascending order.
 
 ## Documentation
 
@@ -9,7 +9,7 @@ This part contains instructions on how to make use of the program.
 
 ## Features
 
-- Displays the value of a string with respect to the given base.
+- Sorts a string slice.
 
 
 ### Usage
@@ -18,17 +18,12 @@ To use this program, download and install the latest version of Go from [here](h
 
 After cloning the projects repository, navigate to the RepeatAlpha directory and execute the following command in your terminal.
 ```bash
-go run .
+go run . 
 
 ```
 Expected output :
 ```bash
-125
-125
-125
-125
-0
-
+[1 2 3 A B C a b c]
 ```
 
 ## Contributions
