@@ -21,14 +21,14 @@ func reverseStrCap(str string) string {
 		// Check if the character is a space or if it's the last character in the string
 		if v == ' ' || i == len(str)-1 {
 			// Process the current word if it's not empty
-			if len(currentWord) > 0 {
+			
 
-				lastChar := currentWord[len(currentWord)-1]
-				// Convert the last character to uppercase
-				lastChar -= 32
-				// Append the current word (except the last character) and the uppercase last character to the result
-				result += currentWord[:len(currentWord)-1] + string(lastChar)
-			}
+			lastChar := currentWord[len(currentWord)-1]
+			// Convert the last character to uppercase
+			lastChar -= 32
+			// Append the current word (except the last character) and the uppercase last character to the result
+			result += currentWord[:len(currentWord)-1] + string(lastChar)
+			
 
 			// If the character is a space, add a space to the result and reset currentWord
 			if v == ' ' {
