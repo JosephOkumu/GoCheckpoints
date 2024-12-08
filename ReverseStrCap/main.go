@@ -1,54 +1,48 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
-// revstrcap takes a string and reverses the capitalization of the last letter of each word
-// while converting all other letters to lowercase.
 func reverseStrCap(str string) string {
-	var result string
-	var currentWord string // Variable to hold the current word being processed
+	currentWord := ""
+	result := ""
 
-	for i, v := range str {
-		// Convert uppercase letters to lowercase
-		if v >= 'A' && v <= 'Z' {
-			v += 32 
+	for i, char := range str {
+		if char >= 65 && char <= 90 {
+			char += 32
 		}
-		if v != ' ' {
-			currentWord += string(v)
-
+		if char != ' ' {
+			currentWord += string(char)
 		}
-
-		// Check if the character is a space or if it's the last character in the string
-		if v == ' ' || i == len(str)-1 {
-			// Process the current word if it's not empty
-			if len(currentWord) > 0{
+		if char == ' ' || i == len(str)-1 {
+			if len(currentWord) > 0 {
 				lastChar := currentWord[len(currentWord)-1]
-				// Convert the last character to uppercase
+				if lastChar >= 97 && lastChar <= 122{
 				lastChar -= 32
-				// Append the current word (except the last character) and the uppercase last character to the result
-				result += currentWord[:len(currentWord)-1] + string(lastChar)
-				
-	
-				// If the character is a space, add a space to the result and reset currentWord
-				if v == ' ' {
+				}
+				currentWord = currentWord[:len(currentWord)-1] + string(lastChar)
+				result += currentWord
+
+				if char == ' ' {
 					result += " "
-					currentWord = "" 
+					currentWord = ""
 				}
 			}
-
+			
 		}
 	}
-
-	return result 
+	return result
 }
 
 func main() {
-	if len(os.Args) < 2 {
+	if len(os.Args) == 1 {
 		return
 	}
 	args := os.Args[1:]
 
 	for _, arg := range args {
-		os.Stdout.WriteString(reverseStrCap(arg) + "\n")
+		fmt.Println(reverseStrCap(arg))
 	}
 }
